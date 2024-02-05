@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Filter</title>
+    <link rel="stylesheet" href="3style.css">
+</head>
+
+<body>
+    <section>
+        <h1>Image Filter</h1>
+        <ul>
+            <li>All</li>
+            <li>Shoes</li>
+            <li>Mobiles</li>
+            <li>Cameras</li>
+            <li>Headphones</li>
+        </ul>
+        <div class="product">
+            <img src="shoe1.jpg" data-filter="Shoes">
+            <img src="mobile1.jpg" data-filter="Mobiles">
+            <img src="camera1 (2).jpg" data-filter="Cameras">
+            <img src="headphone1.jpg" data-filter="Headphones">
+            <img src="shoe2.jpg" data-filter="Shoes">
+            <img src="mobile2.jpg" data-filter="Mobiles">
+            <img src="camera2.jpg" data-filter="Cameras">
+            <img src="headphone2.jpg" data-filter="Headphones">
+            <img src="shoe3.jpg" data-filter="Shoes">
+            <img src="mobile3.jpg" data-filter="Mobiles">
+            <img src="camera3.jpg" data-filter="Cameras">
+            <img src="headphone3.jpg" data-filter="Headphones">
+            <img src="shoe4.jpg" data-filter="Shoes">
+            <img src="mobile4.jpg" data-filter="Mobiles">
+            <img src="camera4.jpg" data-filter="Cameras">
+            <img src="headphone4.jpg" data-filter="Headphones">
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const liItems = document.querySelectorAll('ul li');
+            const imgItems = document.querySelectorAll('.product img');
+
+            liItems.forEach(li => {
+                li.addEventListener('click', function () {
+                    const value = this.textContent.toLowerCase();
+
+                    liItems.forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    this.classList.add('active');
+
+                    imgItems.forEach(img => {
+                        const filter = img.getAttribute('data-filter').toLowerCase();
+
+                        if (value === 'all' || filter === value) {
+                            img.style.display = 'block';
+                        } else {
+                            img.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
